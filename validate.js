@@ -6,10 +6,10 @@ $(document).ready(function(){
         event.preventDefault();
         console.log('User submitted the form!');
         $('input').each(function(){
-            var currentInputTagName = $(this).attr('name');
-            console.log(currentInputTagName);
+            var currentInputClassName = $(this).attr('class');
+            console.log(currentInputClassName);
             // target the corresponding error div for THIS input tag
-            var errorDivClassName = "." + currentInputTagName + '-error';
+            var errorDivClassName = "." + currentInputClassName + '-error';
             console.log(errorDivClassName);
             // input tags have .val()
             // everything else has .html
@@ -18,5 +18,26 @@ $(document).ready(function(){
                 $(errorDivClassName).html('Field cannot be empty.')
             }
         });
+
+        // console.log($('password').val());
+        var password = $('.password').val();
+        var password2 = $('.password-conf').val();
+        if(password !== password2){
+            $('.password-error').html('Your passwords do not match.')
+        }
+        // Force user to have a number in the password
+        // Keep track of numberFound as a boolean
+        var numberFound = false;
+        for(let i = 0; i < password.length; i++){
+            if(isNaN(Number(password[i]))){
+                // this is not a number
+            }else{
+                // this is a number
+                numberFound = true;
+            }
+        }
+        if(!numberFound){
+            $('.conf-password-error').html('Your password must contain a number.')
+        }
     });
 });

@@ -50,7 +50,7 @@ body{
     margin-bottom: 5px;
 }
 
-.input-bar{
+#input-bar{
     border-radius: 10px;
     margin-left: 20px;
     width: 90%;
